@@ -114,7 +114,7 @@
                 </text>
                 <g id="pad1" transform="translate(6.000000, 138.000000)">
                     <g id="Group-7">
-                        <rect id="Rectangle-Copy-3" stroke="#3E7091" fill="#3E7091" x="5.375" y="7.80434783" width="33.125" height="33.0869565" rx="2"></rect>
+                        <rect id="pad-1-well" stroke="#3E7091" fill="#3E7091" x="5.375" y="7.80434783" width="33.125" height="33.0869565" rx="2"></rect>
                         <g id="Group-6-Copy-4">
                             <ellipse id="Oval-3-Copy" stroke="#3E7091" fill="#FFFFFF" cx="11.578125" cy="11.5652174" rx="11.578125" ry="11.5652174"></ellipse>
                             <g id="well-copy-4" transform="translate(6.753906, 3.855072)" fill="#3E7091" fill-rule="nonzero">
@@ -135,7 +135,7 @@
                 </g>
                 <g id="pad2" transform="translate(66.000000, 11.000000)">
                     <g id="Group-7">
-                        <rect id="Rectangle-Copy-3" stroke="#3E7091" fill="#3E7091" x="5.375" y="7.80434783" width="33.125" height="33.0869565" rx="2"></rect>
+                        <rect id="pad-2-well" stroke="#3E7091" fill="#3E7091" x="5.375" y="7.80434783" width="33.125" height="33.0869565" rx="2"></rect>
                         <g id="Group-6-Copy-4">
                             <ellipse id="Oval-3-Copy" stroke="#3E7091" fill="#FFFFFF" cx="11.578125" cy="11.5652174" rx="11.578125" ry="11.5652174"></ellipse>
                             <g id="well-copy-4" transform="translate(6.753906, 3.855072)" fill="#3E7091" fill-rule="nonzero">

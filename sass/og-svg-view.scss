@@ -53,8 +53,14 @@
 #svg{
     svg{
         width: 100%;    
-        height:auto; 
-        cursor: pointer;        
+        height:auto;            
     }      
+    .active-el{
+        cursor: pointer;
+        transition: all 0.5s;     
+    }
+    .active-el:hover {
+        transform: scale(1.2) translate(-2px, -2px);     
+    }
 }
 
