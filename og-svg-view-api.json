@@ -1,0 +1,252 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "og-svg-viewer is a container with fixed boundaries for SVGs to maintain aspect ratio. \n\n### Usage\n\n    <og-svg-map svg-src=\"./test/well-network.svg\"></og-svg-map>",
+      "summary": "",
+      "path": "og-svg-view.es6.js",
+      "properties": [
+        {
+          "name": "svgSrc",
+          "type": "string | null | undefined",
+          "description": "Src path of SVG",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 8,
+              "column": 5
+            },
+            "end": {
+              "line": 11,
+              "column": 6
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_srcSVGUpdated\"",
+              "attributeType": "String"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 13,
+              "column": 4
+            },
+            "end": {
+              "line": 17,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "load",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 4
+            },
+            "end": {
+              "line": 20,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_dragMouseDown",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 4
+            },
+            "end": {
+              "line": 27,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            },
+            {
+              "name": "mouseMoveHandler"
+            },
+            {
+              "name": "self"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_elementDrag",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 5
+            },
+            "end": {
+              "line": 40,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_closeDragElement",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 41,
+              "column": 6
+            },
+            "end": {
+              "line": 43,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            },
+            {
+              "name": "mouseMoveHandler"
+            },
+            {
+              "name": "self"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_srcSVGUpdated",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 45,
+              "column": 6
+            },
+            "end": {
+              "line": 49,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_svgAJAXResponse",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 6
+            },
+            "end": {
+              "line": 53,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "req"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 0,
+          "column": 8
+        },
+        "end": {
+          "line": 55,
+          "column": 3
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "svg-src",
+          "description": "Src path of SVG",
+          "sourceRange": {
+            "start": {
+              "line": 8,
+              "column": 5
+            },
+            "end": {
+              "line": 11,
+              "column": 6
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "og-svg-view"
+    }
+  ]
+}
