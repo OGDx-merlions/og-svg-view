@@ -24,8 +24,10 @@ og-svg-viewer is a container with fixed boundaries for SVGs to maintain aspect r
   <template>
     <style include="og-svg-view-styles"></style>        
     <div class="container">
-      <div id="svg"></div>  
-      <slot id="watch-list" name="watch-list"> </slot>      
+      <div id="svg"></div>      
+      <div id="watch-list-wrapper">
+        <slot name="watch-list"> </slot>  
+      </div>            
     </div>
      
     <iron-ajax    
