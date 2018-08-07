@@ -12,13 +12,16 @@
 
 <!-- Imports for this component -->
 <link rel="import" href="../../px-demo/css/px-demo-styles.html" />
+<link rel="import" href="../css/og-svg-view-demo-styles.html" />
 <link rel="import" href="../og-svg-view.html" />
+<link rel="import" href="../watch-list.html" />
 
 <!-- Demo DOM module -->
 <dom-module id="og-svg-view-demo">
   <template>
     <style include="px-demo-styles"></style>
-
+    <style include="og-svg-view-demo-styles"></style>
+    
     <!-- Header -->
     <px-demo-header
         module-name="og-svg-view"
@@ -35,9 +38,46 @@
 
       <!-- Component ---------------------------------------------------------->
       <px-demo-component slot="px-demo-component">
-        <og-svg-view
+          <watch-list title="EGYPT">
+              <div slot="col-1">
+                <div class="content">
+                  <span class="header">Total Production</span>
+                  <span class="well-count">5000</span>
+                </div>
+              </div>
+              <div slot="col-2">
+                <div class="content lr-border">
+                  <span class="header">Market Indicators</span>
+                  <span class="info">WTI Crude - $69.3 </span>
+                  <span class="info">Natural Gas - $2.8</span>
+                </div>
+              </div>
+              <div slot="col-3">
+                <div class="content">
+                  <span class="header">Watch List</span>
+                  <span class="info">183 perfect HSE days </span>
+                  <span class="info">Abnormal variances in crude oil production</span>
+                </div>
+              </div>
+          </watch-list>
+        <!-- <og-svg-view
         svg-src="{{props.svgSrc.value}}">
-        </og-svg-view>
+        <div slot="watch-list">
+          <watch-list title="EGYPT">
+            <div slot="col-1">
+              <div>
+                <span>Total Producotn</span>
+              </div>
+            </div>
+            <div slot="col-2">
+              col 1
+            </div>
+            <div slot="col-3">
+              col 1
+            </div>
+          </watch-list>
+        </div>
+        </og-svg-view> -->
       </px-demo-component>
       <!-- END Component ------------------------------------------------------>
 

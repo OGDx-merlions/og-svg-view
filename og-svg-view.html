@@ -4,6 +4,7 @@
     'gulp serve' (or similar server setup) to enable correct finding of bower dependencies for local runs.
 -->
 <link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="../iron-ajax/iron-ajax.html"/>
 <link rel="import" href="css/og-svg-view-styles.html">
 
 <!--
@@ -22,8 +23,11 @@ og-svg-viewer is a container with fixed boundaries for SVGs to maintain aspect r
 <dom-module id="og-svg-view">
   <template>
     <style include="og-svg-view-styles"></style>        
-    <div id="svg">      
+    <div class="container">
+      <div id="svg"></div>  
+      <slot id="watch-list" name="watch-list"> </slot>      
     </div>
+     
     <iron-ajax    
     id="svgAjax"    
     handle-as="text"
