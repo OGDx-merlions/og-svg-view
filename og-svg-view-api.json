@@ -7,17 +7,65 @@
       "path": "og-svg-view.es6.js",
       "properties": [
         {
+          "name": "_parentResizable",
+          "type": "Object | null | undefined",
+          "description": "The closest ancestor element that implements `IronResizableBehavior`.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 41,
+              "column": 6
+            },
+            "end": {
+              "line": 41,
+              "column": 75
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_parentResizableChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_notifyingDescendant",
+          "type": "boolean | null | undefined",
+          "description": "True if this element is currently notifying its descendant elements of\nresize.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 47,
+              "column": 6
+            },
+            "end": {
+              "line": 47,
+              "column": 57
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
           "name": "svgSrc",
           "type": "string | null | undefined",
           "description": "Src path of SVG",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 8,
+              "line": 14,
               "column": 5
             },
             "end": {
-              "line": 11,
+              "line": 17,
               "column": 6
             }
           },
@@ -29,17 +77,39 @@
           }
         },
         {
+          "name": "svgProps",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 5
+            },
+            "end": {
+              "line": 21,
+              "column": 6
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}"
+        },
+        {
           "name": "activeElements",
           "type": "Array | null | undefined",
           "description": "Elements to bind with on click action\neg : {id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'}\nid:elements id in SVG\nlistner: call back method to be triggered on click event\nclass : style class to be applied on element",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 21,
+              "line": 31,
               "column": 5
             },
             "end": {
-              "line": 25,
+              "line": 35,
               "column": 6
             }
           },
@@ -50,20 +120,381 @@
             }
           },
           "defaultValue": "[]"
+        },
+        {
+          "name": "svgDisplayMode",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 36,
+              "column": 5
+            },
+            "end": {
+              "line": 39,
+              "column": 6
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"H\""
         }
       ],
       "methods": [
+        {
+          "name": "created",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 54,
+              "column": 4
+            },
+            "end": {
+              "line": 59,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "attached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 61,
+              "column": 4
+            },
+            "end": {
+              "line": 63,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "detached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 65,
+              "column": 4
+            },
+            "end": {
+              "line": 74,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "notifyResize",
+          "description": "Can be called to manually notify a resizable and its descendant\nresizables of a resize change.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 80,
+              "column": 4
+            },
+            "end": {
+              "line": 92,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "assignParentResizable",
+          "description": "Used to assign the closest resizable ancestor to this resizable\nif the ancestor detects a request for notifications.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 98,
+              "column": 4
+            },
+            "end": {
+              "line": 110,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "parentResizable"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "stopResizeNotificationsFor",
+          "description": "Used to remove a resizable descendant from the list of descendants\nthat should be notified of a resize change.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 116,
+              "column": 4
+            },
+            "end": {
+              "line": 123,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "target"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "resizerShouldNotify",
+          "description": "This method can be overridden to filter nested elements that should or\nshould not be notified by the current element. Return true if an element\nshould be notified, or false if it should not be notified.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 134,
+              "column": 4
+            },
+            "end": {
+              "line": 136,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "element",
+              "type": "HTMLElement",
+              "description": "A candidate descendant element that\nimplements `IronResizableBehavior`."
+            }
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "True if the `element` should be notified of resize."
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_onDescendantIronResize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 138,
+              "column": 4
+            },
+            "end": {
+              "line": 150,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_fireResize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 152,
+              "column": 4
+            },
+            "end": {
+              "line": 154,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_onIronRequestResizeNotifications",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 156,
+              "column": 4
+            },
+            "end": {
+              "line": 166,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_parentResizableChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 168,
+              "column": 4
+            },
+            "end": {
+              "line": 172,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "parentResizable"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_notifyDescendant",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 174,
+              "column": 4
+            },
+            "end": {
+              "line": 185,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "descendant"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_requestResizeNotifications",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 187,
+              "column": 4
+            },
+            "end": {
+              "line": 232,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
+        {
+          "name": "_findParent",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../iron-resizable-behavior/iron-resizable-behavior.html",
+            "start": {
+              "line": 234,
+              "column": 4
+            },
+            "end": {
+              "line": 246,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "Polymer.IronResizableBehavior"
+        },
         {
           "name": "ready",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 27,
+              "line": 41,
               "column": 4
             },
             "end": {
-              "line": 31,
+              "line": 45,
               "column": 5
             }
           },
@@ -74,16 +505,16 @@
           }
         },
         {
-          "name": "load",
+          "name": "reflow",
           "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 32,
+              "line": 46,
               "column": 4
             },
             "end": {
-              "line": 34,
+              "line": 78,
               "column": 5
             }
           },
@@ -99,11 +530,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 79,
               "column": 4
             },
             "end": {
-              "line": 41,
+              "line": 85,
               "column": 7
             }
           },
@@ -129,11 +560,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 86,
               "column": 5
             },
             "end": {
-              "line": 54,
+              "line": 113,
               "column": 7
             }
           },
@@ -153,11 +584,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 114,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 116,
               "column": 7
             }
           },
@@ -183,11 +614,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 118,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 122,
               "column": 7
             }
           },
@@ -203,11 +634,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 123,
               "column": 6
             },
             "end": {
-              "line": 68,
+              "line": 131,
               "column": 7
             }
           },
@@ -230,11 +661,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 132,
               "column": 6
             },
             "end": {
-              "line": 84,
+              "line": 147,
               "column": 7
             }
           },
@@ -250,11 +681,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 148,
               "column": 6
             },
             "end": {
-              "line": 101,
+              "line": 164,
               "column": 7
             }
           },
@@ -265,6 +696,30 @@
             },
             {
               "name": "show"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onIronResize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 165,
+              "column": 6
+            },
+            "end": {
+              "line": 167,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "evt"
             }
           ],
           "return": {
@@ -286,7 +741,7 @@
           "column": 8
         },
         "end": {
-          "line": 103,
+          "line": 169,
           "column": 3
         }
       },
@@ -298,11 +753,11 @@
           "description": "Src path of SVG",
           "sourceRange": {
             "start": {
-              "line": 8,
+              "line": 14,
               "column": 5
             },
             "end": {
-              "line": 11,
+              "line": 17,
               "column": 6
             }
           },
@@ -310,20 +765,52 @@
           "type": "string | null | undefined"
         },
         {
+          "name": "svg-props",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 5
+            },
+            "end": {
+              "line": 21,
+              "column": 6
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
           "name": "active-elements",
           "description": "Elements to bind with on click action\neg : {id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'}\nid:elements id in SVG\nlistner: call back method to be triggered on click event\nclass : style class to be applied on element",
           "sourceRange": {
             "start": {
-              "line": 21,
+              "line": 31,
               "column": 5
             },
             "end": {
-              "line": 25,
+              "line": 35,
               "column": 6
             }
           },
           "metadata": {},
           "type": "Array | null | undefined"
+        },
+        {
+          "name": "svg-display-mode",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 36,
+              "column": 5
+            },
+            "end": {
+              "line": 39,
+              "column": 6
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
         }
       ],
       "events": [],
@@ -338,11 +825,11 @@
           "range": {
             "file": "og-svg-view.html",
             "start": {
-              "line": 54,
+              "line": 55,
               "column": 8
             },
             "end": {
-              "line": 54,
+              "line": 55,
               "column": 40
             }
           }
