@@ -41,7 +41,7 @@ Polymer({
         self.$.svg.addEventListener('mousemove',mouseMoveHandler);                     
       },
      _elementDrag:function(e) {
-       let elmnt = e.target;        
+       let elmnt = this.$.svg;        
         e = e || window.event;
         e.preventDefault();
 
