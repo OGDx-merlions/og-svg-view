@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "og-svg-viewer is a container with fixed boundaries for SVGs to maintain aspect ratio with map like behavior. \n\n### Usage\n\n    <og-svg-map svg-src=\"./test/well-network.svg\"></og-svg-map>",
+      "description": "og-svg-viewer is a container with fixed boundaries for SVGs to maintain aspect ratio with map like behavior. \n\n### Usage    \n    <og-svg-view\n        svg-src=\"./test/well-network.svg\"\n        active-elements='[{\"id\":\"pad-1-well\",\"class\":\"active-el\"}]'>\n        <div slot=\"watch-list\">\n          <watch-list title=\"Western Siberia\">\n              <div slot=\"col-1\">\n                <div class=\"content\">\n                  <span class=\"header\">Total Production</span>\n                  <span class=\"well-count\">5000</span>\n                </div>\n              </div>\n              <div slot=\"col-2\">\n                <div class=\"content lr-border\">\n                  <span class=\"header\">Market Indicators</span>\n                  <span class=\"info\">WTI Crude - $69.3 </span>\n                  <span class=\"info\">Natural Gas - $2.8</span>\n                </div>\n              </div>\n              <div slot=\"col-3\">\n                <div class=\"content\">\n                  <span class=\"header\">Watch List</span>\n                  <span class=\"info\">183 perfect HSE days </span>\n                  <span class=\"info\">Abnormal variances in crude oil production</span>\n                </div>\n              </div>\n          </watch-list>\n        </div>\n        </og-svg-view>",
       "summary": "",
       "path": "og-svg-view.es6.js",
       "properties": [
@@ -338,11 +338,11 @@
           "range": {
             "file": "og-svg-view.html",
             "start": {
-              "line": 28,
+              "line": 54,
               "column": 8
             },
             "end": {
-              "line": 28,
+              "line": 54,
               "column": 40
             }
           }
