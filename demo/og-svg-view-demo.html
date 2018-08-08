@@ -264,7 +264,12 @@
         type: Number,
         defaultValue: './test/well-network.svg',
         inputType: 'text'
-      }
+      },
+      activeElements:{
+        type:Array,
+        defaultValue:[{id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'}],
+        inputType: 'text'
+     }
     }
   });
 </script>
