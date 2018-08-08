@@ -1,5 +1,11 @@
 Polymer({
     is: 'og-svg-view',
+    behaviors: [
+        Polymer.IronResizableBehavior
+    ],
+    listeners: {
+    'iron-resize': '_onIronResize'
+    },
     properties: {
       /**
       * Src path of SVG
@@ -9,6 +15,10 @@ Polymer({
      svgSrc:{
        type:String,
        observer:'_srcSVGUpdated'
+     },
+     svgProps:{
+        type:Object,
+        value:{}
      },
      /**
       * Elements to bind with on click action
@@ -23,6 +33,10 @@ Polymer({
         type:Array,
         value:[{id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'}],
         observer:'_bindSVGElements'
+     },
+     svgDisplayMode:{
+         type:String,
+         value:'H'
      }
     },
     ready:function(){
@@ -30,8 +44,38 @@ Polymer({
         this.$.svg.addEventListener('mousedown',(e)=>{this._dragMouseDown(e,mouseMoveHander,this)});
         window.addEventListener('mouseup',(e)=>{this._closeDragElement(e,mouseMoveHander,this)});        
     },
-    load:function(){
-
+    reflow:function(){        
+        let svg = this.$.svg.children[0];
+        let parent = this.$.svg.parentElement;
+        
+        let containerRatio = parent.clientWidth/(parent.clientHeight-this.$["watch-list-wrapper"].clientHeight);       
+        if(containerRatio<this.svgProps.whRatio){
+            if(this.svgDisplayMode!='V'){
+                this.svgDisplayMode='V';      
+                this.$.svg.classList.add("svg-v");
+                this.$.svg.classList.remove("svg-h");
+                this.$.svg.style.marginTop ='0px'; 
+            }                                       
+            //handle margin max
+            let tx = (this.$.svg.style.marginLeft)?parseInt(this.$.svg.style.marginLeft):0;            
+            let sizeDiff = Math.abs(this.$.svg.children[0].clientWidth - parent.clientWidth);            
+            if(Math.abs(tx)>sizeDiff){
+                this.$.svg.style.marginLeft =(sizeDiff * -1)+'px';
+            } 
+        }else{
+            if(this.svgDisplayMode !='H'){
+                this.svgDisplayMode='H';      
+                this.$.svg.classList.add("svg-h");
+                this.$.svg.classList.remove("svg-v"); 
+                this.$.svg.style.marginLeft ='0px';   
+            }                  
+            //handle margin max
+            let ty = (this.$.svg.style.marginTop)?parseInt(this.$.svg.style.marginTop):0;            
+            let sizeDiff = Math.abs(this.$.svg.clientHeight +this.$["watch-list-wrapper"].clientHeight - parent.clientHeight);
+            if(Math.abs(ty)>sizeDiff){
+                this.$.svg.style.marginTop =(sizeDiff * -1)+'px';
+            }                
+        }
     },
     _dragMouseDown:function (e,mouseMoveHandler,self) {        
         e = e || window.event;
@@ -41,7 +85,8 @@ Polymer({
         self.$.svg.addEventListener('mousemove',mouseMoveHandler);                     
       },
      _elementDrag:function(e) {
-       let elmnt = this.$.svg;        
+       let svg = this.$.svg;    
+       let parent = svg.parentElement;    
         e = e || window.event;
         e.preventDefault();
 
@@ -50,8 +95,22 @@ Polymer({
         let diffY= this.pos1.y - e.clientY;
         
         this.pos1 = {x:e.clientX,y:e.clientY};   
-        let t = (elmnt.style.marginTop)?parseInt(elmnt.style.marginTop):0;
-        elmnt.style.marginTop = (t- diffY) + "px";        
+        if(this.svgDisplayMode==='H'){
+            let ty = (svg.style.marginTop)?parseInt(svg.style.marginTop):0;
+            let marginY = ty- diffY;
+            let sizeDiff = Math.abs(svg.clientHeight +this.$["watch-list-wrapper"].clientHeight - parent.clientHeight);
+            if(Math.abs(marginY)<sizeDiff && marginY<=0){
+                svg.style.marginTop = marginY + "px";  
+            }            
+        }
+        if(this.svgDisplayMode==='V'){
+            let tx = (svg.style.marginLeft)?parseInt(svg.style.marginLeft):0;
+            let marginX = tx- diffX;
+            let sizeDiff = Math.abs(this.$.svg.children[0].clientWidth - parent.clientWidth);
+            if(Math.abs(marginX)<sizeDiff && marginX<=0){
+                svg.style.marginLeft = marginX+ "px";  
+            }
+        }
       },
       _closeDragElement:function(e,mouseMoveHandler,self) {                  
         self.$.svg.removeEventListener('mousemove',mouseMoveHandler);  
@@ -64,7 +123,11 @@ Polymer({
       },      
       _svgAJAXResponse:function(event,req){
        let response = event.detail.response;
-       this.$.svg.innerHTML = response;
+       this.$.svg.innerHTML = response;     
+       let svg = this.$.svg.children[0];  
+       this.svgProps.width = svg.width.baseVal.value;
+       this.svgProps.height = svg.height.baseVal.value;
+       this.svgProps.whRatio = svg.width.baseVal.value/svg.height.baseVal.value;
        this._bindSVGElements();
       },
       _bindSVGElements:function(){
@@ -99,6 +162,9 @@ Polymer({
         }else{
             el.classList.add('hidden');
         }          
+      },
+      _onIronResize: function(evt) {
+        this.debounce('resize', this.reflow, 100);
       }
 
   });

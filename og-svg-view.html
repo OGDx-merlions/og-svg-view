@@ -5,6 +5,7 @@
 -->
 <link rel="import" href="../polymer/polymer.html"/>
 <link rel="import" href="../iron-ajax/iron-ajax.html"/>
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html"/>
 <link rel="import" href="css/og-svg-view-styles.html">
 
 <!--
@@ -50,7 +51,7 @@ og-svg-viewer is a container with fixed boundaries for SVGs to maintain aspect r
   <template>
     <style include="og-svg-view-styles"></style>        
     <div class="container">
-      <div id="svg"></div>      
+      <div id="svg" class="svg-h"></div>      
       <div id="watch-list-wrapper">
         <slot name="watch-list"> </slot>  
       </div>            

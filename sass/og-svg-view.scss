@@ -71,11 +71,7 @@
         left: 0;
     }
 }
-#svg{
-    svg{
-        width: 100%;    
-        height:auto;            
-    }      
+#svg{        
     .active-el{
         cursor: pointer;
         transition: all 0.5s;     
@@ -84,4 +80,17 @@
         transform: scale(1.2) translate(-2px, -2px);     
     }    
 }
+
+.svg-h{
+    svg{
+        width: 100%;    
+        height:auto;            
+    }
+}
+.svg-v{
+    svg{
+        height: 100%;    
+        width:auto;            
+    }    
+}  
 

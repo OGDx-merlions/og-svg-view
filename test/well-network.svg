@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="688px" height="528px" viewBox="0 0 688 528" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="background-color: darkslategray;" width="688px" height="528px" viewBox="0 0 688 528" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
     <title>Schematic_Production Manager</title>
     <desc>Created with Sketch.</desc>
@@ -9,7 +9,7 @@
             <use xlink:href="#path-1"></use>
         </mask>
     </defs>
-    <g id="Roseneft" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Roseneft" stroke="none" stroke-width="1" fill="none" >
         <g id="2a.-Sequences" transform="translate(-88.000000, -277.000000)">
             <g id="Schematic_Production-Manager" transform="translate(88.000000, 277.000000)">
                 <use id="Rectangle-13" stroke="#3E7091" mask="url(#mask-2)" stroke-width="2" fill="#FFFFFF" stroke-dasharray="2" xlink:href="#path-1"></use>
