@@ -16,6 +16,10 @@ Polymer({
        type:String,
        observer:'_srcSVGUpdated'
      },
+     svgIdPrefix:{
+        type:String,
+        value:function(){return this.is;}
+     },
      svgProps:{
         type:Object,
         value:{}
@@ -129,7 +133,12 @@ Polymer({
       },      
       _svgAJAXResponse:function(event,req){
        let response = event.detail.response;
-       this.$.svg.innerHTML = response;   
+       if(this.svgIdPrefix){
+        let fixedIdSvg = this.renameIDs(response);
+        this.$.svg.innerHTML = fixedIdSvg;   
+       }else{
+        this.$.svg.innerHTML = response;   
+       }
        this.scopeSubtree(this.$.svg, true);           
        this._bindSVGElements();
       },
@@ -165,6 +174,12 @@ Polymer({
         }else{
             el.classList.add('hidden');
         }          
+      },
+      renameIDs:function(svgStr){
+        var regex = /id="([A-Za-z]+[\w\-\:\.]*)"/gi;    
+        var regexRef =/xlink:href="#([A-Za-z]+[\w\-\:\.]*)"/gi;            
+        let fixedIdSVG = svgStr.replace(regex,"id=\""+this.svgIdPrefix+"-$1\"");
+        return fixedIdSVG.replace(regexRef,"xlink:href=\"#"+this.svgIdPrefix+"-$1\"");
       },
       _onIronResize: function(evt) {
         this.debounce('resize', this.reflow, 100);
