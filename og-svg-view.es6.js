@@ -35,7 +35,7 @@ Polymer({
       */
      activeElements:{
         type:Array,
-        value:[{id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'}],
+        value:[],
         observer:'_bindSVGElements'
      },
      svgDisplayMode:{
@@ -143,8 +143,9 @@ Polymer({
        this._bindSVGElements();
       },
       _bindSVGElements:function(){
+        if(!this.activeElements) return;
         this.activeElements.forEach(r => {            
-            let elList =this.$.svg.querySelectorAll('#'+r.id);
+            let elList =this.$.svg.querySelectorAll('#'+this.svgIdPrefix+'-'+r.id);
             if(elList.length==0){
                 console.log('Error :cannot find elements for the id '+r.id);
                 return;

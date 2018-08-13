@@ -48,7 +48,7 @@
 :host{
     display: block;    
     height: 600px;
-    overflow: hidden;
+    overflow: hidden;    
 }
 .container{
     position: relative;
@@ -76,8 +76,11 @@
         cursor: pointer;
         transition: all 0.5s;     
     }
-    .active-el:hover {
-        transform: scale(1.2) translate(-2px, -2px);     
+    .active-el > * {
+        pointer-events: none;
+    }
+    .active-el:hover {               
+        transform:var(--active-el-transition,scale(1.1) translate(-0.25%, -.25%));  
     }    
 }
 

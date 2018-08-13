@@ -77,8 +77,8 @@
           }
         },
         {
-          "name": "svgProps",
-          "type": "Object | null | undefined",
+          "name": "svgIdPrefix",
+          "type": "string | null | undefined",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -88,6 +88,27 @@
             },
             "end": {
               "line": 21,
+              "column": 6
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "svgProps",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 22,
+              "column": 5
+            },
+            "end": {
+              "line": 25,
               "column": 6
             }
           },
@@ -105,11 +126,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 31,
+              "line": 35,
               "column": 5
             },
             "end": {
-              "line": 35,
+              "line": 39,
               "column": 6
             }
           },
@@ -128,11 +149,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 40,
               "column": 5
             },
             "end": {
-              "line": 39,
+              "line": 43,
               "column": 6
             }
           },
@@ -490,11 +511,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 41,
+              "line": 45,
               "column": 4
             },
             "end": {
-              "line": 45,
+              "line": 49,
               "column": 5
             }
           },
@@ -510,11 +531,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 46,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 88,
               "column": 5
             }
           },
@@ -530,11 +551,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 89,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 95,
               "column": 7
             }
           },
@@ -560,11 +581,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 96,
               "column": 5
             },
             "end": {
-              "line": 117,
+              "line": 123,
               "column": 7
             }
           },
@@ -584,11 +605,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 118,
+              "line": 124,
               "column": 6
             },
             "end": {
-              "line": 120,
+              "line": 126,
               "column": 7
             }
           },
@@ -614,11 +635,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 128,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 132,
               "column": 7
             }
           },
@@ -634,11 +655,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 133,
               "column": 6
             },
             "end": {
-              "line": 132,
+              "line": 143,
               "column": 7
             }
           },
@@ -661,11 +682,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 144,
               "column": 6
             },
             "end": {
-              "line": 148,
+              "line": 160,
               "column": 7
             }
           },
@@ -681,11 +702,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 161,
               "column": 6
             },
             "end": {
-              "line": 165,
+              "line": 177,
               "column": 7
             }
           },
@@ -703,16 +724,37 @@
           }
         },
         {
+          "name": "renameIDs",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 178,
+              "column": 6
+            },
+            "end": {
+              "line": 183,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "svgStr"
+            }
+          ]
+        },
+        {
           "name": "_onIronResize",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 184,
               "column": 6
             },
             "end": {
-              "line": 168,
+              "line": 186,
               "column": 7
             }
           },
@@ -741,7 +783,7 @@
           "column": 8
         },
         "end": {
-          "line": 170,
+          "line": 188,
           "column": 3
         }
       },
@@ -765,7 +807,7 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "svg-props",
+          "name": "svg-id-prefix",
           "description": "",
           "sourceRange": {
             "start": {
@@ -778,6 +820,22 @@
             }
           },
           "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "svg-props",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 22,
+              "column": 5
+            },
+            "end": {
+              "line": 25,
+              "column": 6
+            }
+          },
+          "metadata": {},
           "type": "Object | null | undefined"
         },
         {
@@ -785,11 +843,11 @@
           "description": "Elements to bind with on click action\neg : {id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'}\nid:elements id in SVG\nlistner: call back method to be triggered on click event\nclass : style class to be applied on element",
           "sourceRange": {
             "start": {
-              "line": 31,
+              "line": 35,
               "column": 5
             },
             "end": {
-              "line": 35,
+              "line": 39,
               "column": 6
             }
           },
@@ -801,11 +859,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 40,
               "column": 5
             },
             "end": {
-              "line": 39,
+              "line": 43,
               "column": 6
             }
           },

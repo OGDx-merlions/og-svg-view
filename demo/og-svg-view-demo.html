@@ -61,7 +61,7 @@
               </div>
           </watch-list> -->
         <og-svg-view
-        svg-src="{{props.svgSrc.value}}">
+        svg-src="{{props.svgSrc.value}}" active-elements="{{props.activeElements.value}}"></og-svg-view>>
         <div slot="watch-list">
           <watch-list title="Western Siberia">
               <div slot="col-1">
@@ -267,9 +267,15 @@
       },
       activeElements:{
         type:Array,
-        defaultValue:[{id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'}],
+        defaultValue:[{id:'pad-1-well',listner:(()=>{alert('clicked')}),class:'active-el'},
+        {id:'Rectangle-9',listner:(()=>{alert('clicked')}),class:'active-el'}],
         inputType: 'text'
-     }
+     },
+     svgIdPrefix:{
+        type:String,
+        defaultValue:"well-network",
+        inputType: 'text'
+     }    
     }
   });
 </script>
