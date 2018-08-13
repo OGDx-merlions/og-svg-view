@@ -48,6 +48,10 @@ Polymer({
         let svg = this.$.svg.children[0];
         let parent = this.$.svg.parentElement;
         
+        this.svgProps.width = svg.width.baseVal.value;
+        this.svgProps.height = svg.height.baseVal.value;
+        this.svgProps.whRatio = svg.width.baseVal.value/svg.height.baseVal.value;
+
         let containerRatio = parent.clientWidth/(parent.clientHeight-this.$["watch-list-wrapper"].clientHeight);       
         if(containerRatio<this.svgProps.whRatio){
             if(this.svgDisplayMode!='V'){
@@ -95,14 +99,14 @@ Polymer({
         let diffY= this.pos1.y - e.clientY;
         
         this.pos1 = {x:e.clientX,y:e.clientY};   
-        if(this.svgDisplayMode==='H'){
+        //if(this.svgDisplayMode==='H'){
             let ty = (svg.style.marginTop)?parseInt(svg.style.marginTop):0;
             let marginY = ty- diffY;
             let sizeDiff = Math.abs(svg.clientHeight +this.$["watch-list-wrapper"].clientHeight - parent.clientHeight);
             if(Math.abs(marginY)<sizeDiff && marginY<=0){
                 svg.style.marginTop = marginY + "px";  
             }            
-        }
+        //}
         if(this.svgDisplayMode==='V'){
             let tx = (svg.style.marginLeft)?parseInt(svg.style.marginLeft):0;
             let marginX = tx- diffX;
@@ -123,11 +127,8 @@ Polymer({
       },      
       _svgAJAXResponse:function(event,req){
        let response = event.detail.response;
-       this.$.svg.innerHTML = response;     
-       let svg = this.$.svg.children[0];  
-       this.svgProps.width = svg.width.baseVal.value;
-       this.svgProps.height = svg.height.baseVal.value;
-       this.svgProps.whRatio = svg.width.baseVal.value/svg.height.baseVal.value;
+       this.$.svg.innerHTML = response;   
+       this.scopeSubtree(this.$.svg, true);           
        this._bindSVGElements();
       },
       _bindSVGElements:function(){
