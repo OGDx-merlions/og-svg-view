@@ -47,7 +47,9 @@ Polymer({
     reflow:function(){        
         let svg = this.$.svg.children[0];
         let parent = this.$.svg.parentElement;
-        
+        if(!svg){
+            return;//svg is not loaded
+        }
         this.svgProps.width = svg.width.baseVal.value;
         this.svgProps.height = svg.height.baseVal.value;
         this.svgProps.whRatio = svg.width.baseVal.value/svg.height.baseVal.value;
