@@ -745,9 +745,9 @@
           ]
         },
         {
-          "name": "_onIronResize",
+          "name": "getElementById",
           "description": "",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "start": {
               "line": 184,
@@ -755,6 +755,27 @@
             },
             "end": {
               "line": 186,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "name": "_onIronResize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 187,
+              "column": 6
+            },
+            "end": {
+              "line": 189,
               "column": 7
             }
           },
@@ -783,7 +804,7 @@
           "column": 8
         },
         "end": {
-          "line": 188,
+          "line": 191,
           "column": 3
         }
       },

@@ -74,13 +74,13 @@
 #svg{        
     .active-el{
         cursor: pointer;
-        transition: all 0.5s;     
+        transition: var(--active-el-transition, all 0.2s);     
     }
     .active-el > * {
         pointer-events: none;
     }
     .active-el:hover {               
-        transform:var(--active-el-transition,scale(1.1) translate(-0.25%, -.25%));  
+        transform:var(--active-el-transform,scale(1.1) translate(-0.25%, -.25%));  
     }    
 }
 
