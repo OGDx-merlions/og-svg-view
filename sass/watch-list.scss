@@ -53,7 +53,7 @@
     color: #5d707d;
 }
 .title{
-    margin-left: 0.5em;
+    margin-left: var(--title-margin-left,0.5em);
     font-size: 1.5em;
     font-weight: bold;    
 }
