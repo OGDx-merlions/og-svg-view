@@ -182,6 +182,9 @@ Polymer({
         let fixedIdSVG = svgStr.replace(regex,"id=\""+this.svgIdPrefix+"-$1\"");
         return fixedIdSVG.replace(regexRef,"xlink:href=\"#"+this.svgIdPrefix+"-$1\"");
       },
+      getElementById:function(id){
+        return this.$.svg.querySelector('#'+this.svgIdPrefix+'-'+id);
+      },
       _onIronResize: function(evt) {
         this.debounce('resize', this.reflow, 100);
       }
