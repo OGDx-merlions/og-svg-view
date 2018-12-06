@@ -129,7 +129,7 @@ Polymer({
       _srcSVGUpdated:function(){
         this.$.svgAjax.url = this.svgSrc;        
         this.$.svgAjax.generateRequest();
-         
+        this.fire("svg-loaded");
       },      
       _svgAJAXResponse:function(event,req){
        let response = event.detail.response;
@@ -160,7 +160,7 @@ Polymer({
         });
       },
       showHideElement:function(id,show){
-        let elList =this.$.svg.querySelectorAll('#'+id);
+        let elList =this.$.svg.querySelectorAll('#'+this.svgIdPrefix+"-"+id);
         if(elList.length==0){
             console.log('Error :cannot find elements for the id '+id);
             return;
@@ -171,8 +171,10 @@ Polymer({
         }
         let el = elList[0]; 
         if(show) {
+            el.setAttribute('visibility','visible');
             el.classList.remove('hidden');
         }else{
+            el.setAttribute('visibility','hidden');
             el.classList.add('hidden');
         }          
       },
