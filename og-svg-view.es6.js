@@ -43,17 +43,16 @@ Polymer({
          value:'H'
      }
     },
-    ready:function(){
-        let mouseMoveHander = this._elementDrag.bind(this);
-        this.$.svg.addEventListener('mousedown',(e)=>{this._dragMouseDown(e,mouseMoveHander,this)});
-        window.addEventListener('mouseup',(e)=>{this._closeDragElement(e,mouseMoveHander,this)});        
+    ready:function(){           
     },
-    reflow:function(){        
+    reflow:function(){            
         let svg = this.$.svg.children[0];
         let parent = this.$.svg.parentElement;
         if(!svg){
-            return;//svg is not loaded
+            console.log('reflow');    
+            return;//svg is not loaded            
         }
+        console.log('reflow after svg load');    
         this.svgProps.width = svg.width.baseVal.value;
         this.svgProps.height = svg.height.baseVal.value;
         this.svgProps.whRatio = svg.width.baseVal.value/svg.height.baseVal.value;
@@ -86,50 +85,10 @@ Polymer({
                 this.$.svg.style.marginTop =(sizeDiff * -1)+'px';
             }                
         }
-    },
-    _dragMouseDown:function (e,mouseMoveHandler,self) {        
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        self.pos1 = {x:e.clientX,y:e.clientY};         
-        self.$.svg.addEventListener('mousemove',mouseMoveHandler);                     
-      },
-     _elementDrag:function(e) {
-       let svg = this.$.svg;    
-       let parent = svg.parentElement;    
-        e = e || window.event;
-        e.preventDefault();
-
-        // calculate the new cursor position:
-        let diffX = this.pos1.x - e.clientX;
-        let diffY= this.pos1.y - e.clientY;
-        
-        this.pos1 = {x:e.clientX,y:e.clientY};   
-        //if(this.svgDisplayMode==='H'){
-            let ty = (svg.style.marginTop)?parseInt(svg.style.marginTop):0;
-            let marginY = ty- diffY;
-            let sizeDiff = Math.abs(svg.clientHeight +this.$["watch-list-wrapper"].clientHeight - parent.clientHeight);
-            if(Math.abs(marginY)<sizeDiff && marginY<=0){
-                svg.style.marginTop = marginY + "px";  
-            }            
-        //}
-        if(this.svgDisplayMode==='V'){
-            let tx = (svg.style.marginLeft)?parseInt(svg.style.marginLeft):0;
-            let marginX = tx- diffX;
-            let sizeDiff = Math.abs(this.$.svg.children[0].clientWidth - parent.clientWidth);
-            if(Math.abs(marginX)<sizeDiff && marginX<=0){
-                svg.style.marginLeft = marginX+ "px";  
-            }
-        }
-      },
-      _closeDragElement:function(e,mouseMoveHandler,self) {                  
-        self.$.svg.removeEventListener('mousemove',mouseMoveHandler);  
-      },
-      
+    },         
       _srcSVGUpdated:function(){
         this.$.svgAjax.url = this.svgSrc;        
-        this.$.svgAjax.generateRequest();
-        this.fire("svg-loaded");
+        this.$.svgAjax.generateRequest();        
       },      
       _svgAJAXResponse:function(event,req){
        let response = event.detail.response;
@@ -141,6 +100,8 @@ Polymer({
        }
        this.scopeSubtree(this.$.svg, true);           
        this._bindSVGElements();
+       this.reflow();
+       this.fire("svg-loaded");
       },
       _bindSVGElements:function(){
         if(!this.activeElements) return;
@@ -158,6 +119,23 @@ Polymer({
             el.addEventListener('click',r.listner);
             el.classList.add(r.class);
         });
+      },
+      swapVisibility:function(id){
+        let elList =this.$.svg.querySelectorAll('#'+this.svgIdPrefix+"-"+id);
+        if(elList.length==0){
+            console.log('Error :cannot find elements for the id '+id);
+            return;
+        }
+        if(elList && elList.length>1){
+            console.log('Error : multiple elements with same id for the id '+id);
+            return;
+        }
+        let el = elList[0]; 
+        if(el.getAttribute('visibility')=='hidden' ||  el.classList.contains('hidden')){
+            this.showHideElement(el,true);
+        }else{
+            this.showHideElement(el,false);
+        }
       },
       showHideElement:function(id,show){
         let elList =this.$.svg.querySelectorAll('#'+this.svgIdPrefix+"-"+id);

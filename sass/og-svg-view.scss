@@ -51,22 +51,27 @@
     overflow: hidden;    
 }
 .container{
+    display: flex;//new
+    flex-flow: column;//new
+    width:100%;
+
     position: relative;
     height: 100%;
     #watch-list-wrapper{
-        position: absolute;
-        width:100%;
-        bottom: 0;
+        align-self:flex-end;
+        order: 2;        
+        width:100%;        
     }
     #watch-list{
-        width: 100%;
-        position: absolute;
+        width: 100%;        
         bottom: 0;
         left: 0;        
     }
     #svg{
-        width: 100%;
-        position: absolute;
+        flex: 1;
+        order: 1;  
+        overflow:scroll;
+        width: 100%;        
         top: 0;
         left: 0;
     }
@@ -85,6 +90,7 @@
 }
 
 .svg-h{
+    width:100%;
     svg{
         width: 100%;    
         height:auto;            
