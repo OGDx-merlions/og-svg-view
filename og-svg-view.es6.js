@@ -116,7 +116,7 @@ Polymer({
                 return;
             }
             let el = elList[0];
-            el.addEventListener('click',r.listner);
+            el.addEventListener('tap',r.listner);
             el.classList.add(r.class);
         });
       },
